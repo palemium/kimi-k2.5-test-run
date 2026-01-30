@@ -1,22 +1,10 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "project": ["src/**/*.{ts,tsx}"],
-  "entry": [
-    "next.config.{js,ts,mjs}",
-    "src/middleware.ts"
-  ],
-  "ignore": [
-    "**/*.d.ts",
-    "**/*.test.{ts,tsx}",
-    "**/*.spec.{ts,tsx}"
-  ],
-  "ignoreDependencies": [
-    "@types/node",
-    "lefthook",
-    "tailwindcss",
-    "@tailwindcss/postcss"
-  ],
-  "ignoreBinaries": ["eslint"],
+  "entry": ["next.config.{js,ts,mjs}"],
+  "ignore": ["**/*.d.ts", "**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}", "src/lib/migrate.ts"],
+  "ignoreDependencies": ["globals", "tailwindcss", "tsx"],
+  "ignoreBinaries": [],
   "rules": {
     "exports": "error",
     "files": "error",
