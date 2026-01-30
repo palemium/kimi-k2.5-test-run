@@ -1,0 +1,16 @@
+{
+  "threshold": 5,
+  "minLines": 5,
+  "minTokens": 50,
+  "reporters": ["console"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/out/**",
+    "**/dist/**",
+    "**/*.config.{js,ts}",
+    "**/coverage/**"
+  ],
+  "absolute": false,
+  "gitignore": true
+}

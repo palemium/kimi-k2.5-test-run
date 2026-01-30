@@ -1,0 +1,49 @@
+# Lefthook configuration for LLM-first code quality
+# Mirrors GitHub Actions validations exactly
+
+pre-commit:
+  parallel: true
+  jobs:
+    # TypeScript compilation check
+    - name: typecheck
+      run: npx tsc --noEmit
+      glob: "*.{ts,tsx}"
+
+    # ESLint with auto-fix (no semicolons, strict LLM rules)
+    - name: eslint
+      run: npx eslint --fix {staged_files}
+      glob: "*.{ts,tsx,js,jsx}"
+      stage_fixed: true
+
+    # Prettier formatting
+    - name: prettier
+      run: npx prettier --write {staged_files}
+      glob: "*.{ts,tsx,js,jsx,json,css,md}"
+      stage_fixed: true
+
+    # Copy-paste detection (catches LLM duplicate code)
+    - name: jscpd
+      run: npx jscpd
+      glob: "*.{ts,tsx,js,jsx}"
+
+# Pre-push: Stricter checks (matches CI)
+pre-push:
+  parallel: false
+  jobs:
+    - name: full-typecheck
+      run: npx tsc --noEmit
+    
+    - name: full-lint
+      run: npx eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0
+    
+    - name: format-check
+      run: npx prettier --check "src/**/*.{ts,tsx,js,jsx,json,css,md}"
+    
+    - name: jscpd-check
+      run: npx jscpd --threshold 5
+    
+    - name: knip-check
+      run: npx knip --no-exit-code
+    
+    - name: build-check
+      run: npm run build
