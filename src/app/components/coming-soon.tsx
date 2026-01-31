@@ -147,7 +147,7 @@ export function ComingSoon(): React.JSX.Element {
 
       <form
         onSubmit={handleSubmit}
-        className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
+        className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:items-start sm:justify-center"
       >
         <div className="flex w-full flex-col gap-2 sm:w-auto">
           <input
