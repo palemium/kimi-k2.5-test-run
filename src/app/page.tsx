@@ -17,7 +17,7 @@ export default function Home(): React.JSX.Element {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Mathematics Redefined
             </div>
-            <h1 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
+            <h1 className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text pb-2 text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
               Pythagoras
             </h1>
             <p className="mt-4 text-lg text-white/60">Where geometry meets modern elegance</p>
