@@ -1,79 +1,84 @@
-<svg viewBox="0 -60 420 460" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 -80 460 500" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="triangleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.8" />
-      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0.8" />
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.85"/>
     </linearGradient>
-    <linearGradient id="squareAGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+
+    <linearGradient id="squareAGradient">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.35"/>
     </linearGradient>
-    <linearGradient id="squareBGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#d946ef;stop-opacity:0.3" />
+
+    <linearGradient id="squareBGradient">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d946ef" stop-opacity="0.35"/>
     </linearGradient>
-    <linearGradient id="squareCGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f43f5e;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0.3" />
+
+    <linearGradient id="squareCGradient">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0.35"/>
     </linearGradient>
+
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  
-  <!-- Square on side a (height = 100) - attached to left side -->
-  <rect x="50" y="100" width="100" height="100" fill="url(#squareAGradient)" stroke="#3b82f6" stroke-width="2" opacity="0.6">
-    <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="100" y="155" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="#3b82f6" text-anchor="middle" filter="url(#glow)">a²</text>
-  
-  <!-- Square on side b (base = 150) - attached to bottom -->
-  <rect x="150" y="200" width="150" height="150" fill="url(#squareBGradient)" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
-    <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3s" repeatCount="indefinite" begin="1s"/>
-  </rect>
-  <text x="225" y="280" font-family="system-ui, sans-serif" font-size="32" font-weight="bold" fill="#8b5cf6" text-anchor="middle" filter="url(#glow)">b²</text>
-  
-  <!-- Right triangle: right angle at C(150,200), A(150,100), B(300,200) -->
-  <polygon points="150,200 150,100 300,200" fill="url(#triangleGradient)" stroke="#6366f1" stroke-width="3" filter="url(#glow)">
-    <animate attributeName="opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite"/>
-  </polygon>
-  
-  <!-- Right angle indicator at C -->
-  <path d="M 150 180 L 170 180 L 170 200" fill="none" stroke="#6366f1" stroke-width="2" opacity="0.8"/>
-  
-  <!-- Square on hypotenuse c -->
-  <!-- Hypotenuse AB from A(150,100) to B(300,200) -->
-  <!-- Length c = √(100² + 150²) = 180.28 -->
-  <!-- Square is built externally on side AB -->
-  <g>
-    <!-- Square with side length = hypotenuse length, properly positioned -->
-    <!-- Vertices of the square on hypotenuse: -->
-    <!-- P1 = A(150,100), P2 = B(300,200) -->
-    <!-- Vector AB = (150, 100), length = sqrt(150^2 + 100^2) = 180.28 -->
-    <!-- Perpendicular vector (outward, rotated -90°): (100, -150) -->
-    <!-- Perpendicular length = 180.28 (same as hypotenuse for square) -->
-    <!-- P3 = B + (100, -150) = (400, 50) -->
-    <!-- P4 = A + (100, -150) = (250, -50) -->
-    <polygon points="150,100 300,200 400,50 250,-50" fill="url(#squareCGradient)" stroke="#f43f5e" stroke-width="2" opacity="0.6">
-      <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-    </polygon>
-    
-    <!-- c² label at center of square -->
-    <text x="275" y="75" font-family="system-ui, sans-serif" font-size="28" font-weight="bold" fill="#f43f5e" text-anchor="middle" filter="url(#glow)">c²</text>
-  </g>
-  
+
+  <!-- Coordinates -->
+  <!-- C = (150,200), A = (150,100), B = (300,200) -->
+  <!-- a = 100, b = 150 -->
+
+  <!-- Square on side a -->
+  <rect x="50" y="100" width="100" height="100"
+        fill="url(#squareAGradient)" stroke="#3b82f6" stroke-width="2"/>
+  <text x="100" y="160" font-size="22" font-weight="600"
+        fill="#1e40af" text-anchor="middle">a²</text>
+
+  <!-- Square on side b -->
+  <rect x="150" y="200" width="150" height="150"
+        fill="url(#squareBGradient)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="225" y="285" font-size="26" font-weight="600"
+        fill="#5b21b6" text-anchor="middle">b²</text>
+
+  <!-- Right triangle -->
+  <polygon points="150,200 150,100 300,200"
+           fill="url(#triangleGradient)"
+           stroke="#4338ca" stroke-width="3" filter="url(#glow)"/>
+
+  <!-- Right angle marker -->
+  <path d="M150 180 L170 180 L170 200"
+        fill="none" stroke="#4338ca" stroke-width="2"/>
+
+  <!-- Hypotenuse square (correctly constructed) -->
+  <!-- Normalized perpendicular to AB -->
+  <!-- AB = (150,100), |AB| ≈ 180.28 -->
+  <!-- perp = (100,-150) normalized then scaled -->
+  <polygon
+    points="
+      150,100
+      300,200
+      355.4,116.9
+      205.4,16.9"
+    fill="url(#squareCGradient)"
+    stroke="#f43f5e"
+    stroke-width="2"/>
+
+  <text x="260" y="85" font-size="26" font-weight="600"
+        fill="#be123c" text-anchor="middle">c²</text>
+
   <!-- Side labels -->
-  <text x="135" y="155" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#6366f1">a</text>
-  <text x="230" y="195" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#6366f1">b</text>
-  <text x="210" y="125" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#f43f5e">c</text>
-  
-  <!-- Formula at bottom -->
-  <text x="200" y="380" font-family="system-ui, sans-serif" font-size="20" font-weight="300" fill="#64748b" text-anchor="middle">
+  <text x="135" y="155" font-size="16" fill="#1e3a8a">a</text>
+  <text x="230" y="195" font-size="16" fill="#4c1d95">b</text>
+  <text x="220" y="135" font-size="16" fill="#9f1239">c</text>
+
+  <!-- Formula -->
+  <text x="230" y="420" font-size="22"
+        fill="#475569" text-anchor="middle">
     a² + b² = c²
-    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
   </text>
 </svg>
